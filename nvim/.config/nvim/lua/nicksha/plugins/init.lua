@@ -19,7 +19,7 @@ require("lazy").setup({
   require("nicksha.plugins.oil"),
   require("nicksha.plugins.tmuxnavigator"),
   require("nicksha.plugins.typstpreview"),
-
+  require("nicksha.plugins.vimtex"),
 }, {
   rocks = { enabled = false },
 })
