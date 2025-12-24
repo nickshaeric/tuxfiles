@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+# Interactively copy templates using fzf
+# 1. Select a template from ~/Documents/templates
+# 2. Select a destination directory from curated home folders
+# 3. Copy the template there (optionally rename)
+
+set -euo pipefail
+
+TEMPLATE_DIR="$HOME/Documents/templates"
+
+# Ensure template directory exists
+if [[ ! -d "$TEMPLATE_DIR" ]]; then
+    echo "Error: Template directory not found at $TEMPLATE_DIR"
+    exit 1
+fi
+
+# Step 1: Select template file (ignore .git completely)
+template_file=$(find "$TEMPLATE_DIR" \
+    -type d -name .git -prune -o -type f -print \
+    | fzf --prompt="Select a template: ")
+
+if [[ -z "$template_file" ]]; then
+    echo "No template selected. Exiting."
+    exit 0
+fi
+
+# Step 2: Select destination directory (ignore .git completely)
+search_dirs=(
+    "$HOME/Desktop"
+    "$HOME/Developer"
+    "$HOME/Documents"
+    "$HOME/university"
+)
+
+dest_dir=$(find "${search_dirs[@]}" \
+    -maxdepth 5 \
+    -type d -name .git -prune -o -type d -print 2>/dev/null \
+    | fzf --prompt="Select destination directory: ")
+
+if [[ -z "$dest_dir" ]]; then
+    echo "No destination selected. Exiting."
+    exit 0
+fi
+
+# Step 3: Ask for optional new name
+read -rp "Enter new filename (or press Enter to keep '$(basename "$template_file")'): " new_name
+new_name="${new_name:-$(basename "$template_file")}"
+
+# Step 4: Copy file
+cp "$template_file" "$dest_dir/$new_name"
+echo "Copied $(basename "$template_file") → $dest_dir/$new_name"
