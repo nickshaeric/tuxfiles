@@ -12,9 +12,9 @@
       fancy-splash-image "~/tuxfiles/doom/.config/doom/emacs.png")
 
 ;; Fonts
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16)
+(setq doom-font (font-spec :family "Iosevka Nerd Font Mono" :size 16)
       doom-variable-pitch-font (font-spec :family "Inter" :size 16)
-      doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size 26)
+      doom-big-font (font-spec :family "Iosevka Nerd Font Mono" :size 26)
       doom-symbol-font (font-spec :family "Symbols Nerd Font Mono"))
 
 ;;; Editor Settings

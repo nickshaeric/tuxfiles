@@ -1,6 +1,6 @@
 # nicksha@sway
 # ===================== BASIC START-UP STUFF ======================
-font pango: JetBrains Mono Nerd Font Mono 10
+font pango: Iosevka Nerd Font Mono 10
 
 # Network manager applet
 exec nm-applet
@@ -55,7 +55,7 @@ input type:keyboard {
 # ===================== KEY BINDINGS ============================
 
 # --- Launchers ---
-bindsym $mod+s exec spotify
+bindsym $mod+s exec spotify-launcher
 bindsym $mod+b exec $browser
 bindsym $mod+Return exec $term
 bindsym $mod+d exec emacsclient -c -a "emacs"

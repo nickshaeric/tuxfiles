@@ -3,10 +3,10 @@ config-default-files = true
 
 # font
 font-size = 16
-font-family = JetBrainsMono Nerd Font Mono
-font-family-bold = JetBrainsMono Nerd Font Mono
-font-family-italic = JetBrainsMono Nerd Font Mono
-font-family-bold-italic = JetBrainsMono Nerd Font Mono
+font-family = IosevkaTerm Nerd Font Mono
+font-family-bold = IosevkaTerm Nerd Font Mono
+font-family-italic = IosevkaTerm Nerd Font Mono
+font-family-bold-italic = IosevkaTerm Nerd Font Mono
 
 # theme
 theme = Gruvbox Dark
