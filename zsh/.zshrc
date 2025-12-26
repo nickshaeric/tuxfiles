@@ -1,4 +1,4 @@
-# zsh@mbookair
+# zsh@archlinux
 
 # --- Modes ---
 bindkey -v  # vim mode

@@ -1,5 +1,3 @@
-# Homebrew shellenv
-
 # ──────────────────────────────
 # Gruvbox Dark Palette
 # ──────────────────────────────

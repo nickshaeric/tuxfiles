@@ -1,4 +1,4 @@
--- nicksha@nvim
+-- nvim@archlinux
 
 -- Core Settings
 require("nicksha.core.globals")

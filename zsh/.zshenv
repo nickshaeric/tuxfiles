@@ -1,4 +1,4 @@
-# zshenv@mbookair
+# zshenv@archlinux
 export ZDOTDIR="$HOME"
 
 # move runtime files out of $HOME

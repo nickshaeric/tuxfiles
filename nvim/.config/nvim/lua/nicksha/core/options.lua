@@ -1,5 +1,3 @@
--- nicksha@options
-
 local opt = vim.opt
 
 -- UI
