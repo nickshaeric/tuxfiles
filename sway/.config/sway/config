@@ -135,16 +135,28 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 # --- Screenshot ---
 bindsym Print exec grim
 
-#
-# Status Bar:
-#
+# --- Status Bar ---
 bar {
     position bottom
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+    status_command i3status
+    workspace_buttons yes
+    strip_workspace_numbers yes
     colors {
-        statusline #ebddd2
+        statusline #ebdbb2
         background #000000
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        separator #665c54
+        
+        # Workspace colors
+        # Active workspace - use the green from your focused border
+        focused_workspace #689d6a #689d6a #000000
+        
+        # Inactive workspace - black background, subtle text
+        inactive_workspace #000000 #000000 #7c6f64
+        
+        # Active but not focused (on other monitor)
+        active_workspace #000000 #000000 #ebdbb2
+        
+        # Urgent - red accent
+        urgent_workspace #cc241d #cc241d #ebdbb2
     }
 }
-
