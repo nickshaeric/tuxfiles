@@ -6,7 +6,7 @@
   "theme.font.name": "Iosevka Nerd Font Mono",
   "theme.font.style": "normal",
   "theme.font.label": "Iosevka Nerd Font Mono",
-  "theme.bar.location": "bottom",
+  "theme.bar.location": "top",
   "bar.workspaces.show_icons": false,
   "bar.workspaces.show_numbered": true,
   "theme.bar.menus.menu.notifications.scrollbar.color": "#83a598",
