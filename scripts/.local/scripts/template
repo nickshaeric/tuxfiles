@@ -40,8 +40,8 @@ echo "Finding destination directories..."
 # List of directories to search for destinations
 search_dirs=(
     "$HOME/Desktop"
-    "$HOME/Developer"
     "$HOME/Documents"
+    "$HOME/developer"
     "$HOME/university"
 )
 
