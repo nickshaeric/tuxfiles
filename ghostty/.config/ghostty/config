@@ -9,7 +9,7 @@ font-family-italic = IosevkaTerm Nerd Font Mono
 font-family-bold-italic = IosevkaTerm Nerd Font Mono
 
 # theme
-theme = Gruvbox Dark
+theme = Gruvbox Dark Hard
 background = 000000
 term = xterm-256color
 

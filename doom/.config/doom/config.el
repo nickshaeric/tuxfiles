@@ -80,7 +80,7 @@
   :hook (org-mode . xenops-mode)
   :config
   (setq xenops-math-latex-process 'dvipng
-        xenops-math-image-scale-factor 1.7
+        xenops-math-image-scale-factor 2
         xenops-reveal-on-entry t))
 
 ;;; Org-Roam Configuration
