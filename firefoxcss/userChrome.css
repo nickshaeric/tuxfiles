@@ -1,0 +1,23 @@
+/*firefox@archlinux*/
+.titlebar-buttonbox-container {
+    display: none !important;
+}
+
+.titlebar-spacer[type="pre-tabs"] {
+    width: 3px !important;
+    min-width: 3px !important;
+}
+
+.tab-close-button {
+    display: none !important;
+}
+
+#context-navigation,
+#context-sep-navigation {
+  display: none !important;
+}
+
+#forward-button,
+#back-button {
+  display: none !important;
+}

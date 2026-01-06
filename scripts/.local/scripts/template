@@ -1,0 +1,91 @@
+#!/usr/bin/env bash
+
+# Exit on errors, undefined variables, and pipe failures
+set -euo pipefail
+
+###########################################
+# STEP 1: Check if templates directory exists
+###########################################
+TEMPLATE_DIR="$HOME/Documents/templates"
+
+if [[ ! -d "$TEMPLATE_DIR" ]]; then
+    echo "Error: Template directory not found at $TEMPLATE_DIR"
+    exit 1
+fi
+
+###########################################
+# STEP 2: Let user pick a template file
+###########################################
+echo "Finding templates..."
+
+# Find all files in template directory (excluding git folders)
+template_file=$(find "$TEMPLATE_DIR" -type f -not -path "*/.git/*" 2>/dev/null \
+    | fzf --prompt="Select a template: " --height 20 --border)
+
+# Exit if user cancelled (pressed ESC or Ctrl+C)
+if [[ -z "$template_file" ]]; then
+    echo "No template selected. Exiting."
+    exit 0
+fi
+
+# Get the absolute path to the template
+template_file=$(realpath "$template_file")
+echo "Selected template: $(basename "$template_file")"
+
+###########################################
+# STEP 3: Let user pick destination directory
+###########################################
+echo "Finding destination directories..."
+
+# List of directories to search for destinations
+search_dirs=(
+    "$HOME/Desktop"
+    "$HOME/Documents"
+    "$HOME/developer"
+    "$HOME/university"
+)
+
+# Find all subdirectories in the search locations
+dest_dir=$(
+    for dir in "${search_dirs[@]}"; do
+        find "$dir" -type d -not -path "*/.git*" 2>/dev/null
+    done | fzf --prompt="Select destination directory: " --height 20 --border
+)
+
+# Exit if user cancelled
+if [[ -z "$dest_dir" ]]; then
+    echo "No destination selected. Exiting."
+    exit 0
+fi
+
+# Get the absolute path and verify it exists
+dest_dir=$(realpath "$dest_dir")
+if [[ ! -d "$dest_dir" ]]; then
+    echo "Error: Destination directory does not exist"
+    exit 1
+fi
+
+echo "Selected destination: $dest_dir"
+
+###########################################
+# STEP 4: Optional rename
+###########################################
+original_name=$(basename "$template_file")
+read -rp "Enter new filename (or press Enter to keep '$original_name'): " new_name
+
+# If user pressed Enter without typing, use original name
+if [[ -z "$new_name" ]]; then
+    new_name="$original_name"
+fi
+
+###########################################
+# STEP 5: Copy the file
+###########################################
+destination_path="$dest_dir/$new_name"
+
+cp "$template_file" "$destination_path"
+
+echo ""
+echo "✓ Success!"
+echo "Copied: $original_name"
+echo "To: $destination_path"

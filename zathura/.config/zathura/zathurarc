@@ -1,0 +1,30 @@
+# zathura@archlinux
+set guioptions "none"
+set adjust-open best-fit
+set selection-clipboard clipboard
+set zoom-step 10
+set scroll-step 80
+
+# One page per row by default
+set pages-per-row 1
+
+# LaTeX
+set synctex true
+
+# --- Navigation ---
+# Vim-like scrolling
+map j scroll down
+map k scroll up
+map d scroll half-down
+map u scroll half-up
+
+# Page navigation
+map J navigate next
+map K navigate previous
+map gg goto top
+map G goto bottom
+
+# --- Search ---
+map n search next
+map N search previous
+
