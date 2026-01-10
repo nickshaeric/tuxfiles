@@ -1,46 +1,33 @@
 # sway@archlinux
 # ===================== BASIC START-UP STUFF ======================
 font pango: JetBrains Mono Nerd Font 10
-
 # Network manager applet
 exec nm-applet
-
 # Start Emacs server for emacsclient (Doom Emacs)
-exec_always --no-startup-id emacs --daemon
-
+exec --no-startup-id emacs --daemon
 # ===================== MONITORS ==================================
 # monitor details: swaymsg -t get_outputs
-output eDP-1 pos 0 0 res 1920x1080@600Hz
+output eDP-1 pos 0 0 res 1920x1080@60Hz
 output DP-2 pos 0 -1080 res 1920x1080@60Hz
-
 # ===================== APP VARIABLES =============================
 set $mod Mod4
-set $left h
-set $down j
-set $up k
-set $right l
 set $term ghostty
 set $browser librewolf
-
-# ===================== BORDERS & GAPS ============================
-
+# ===================== GAPS & BORDERS ============================
 # Gaps between windows
 gaps inner 1
 gaps outer 1
 smart_gaps on
-
 # Border width
 default_border pixel 1
 default_floating_border pixel 2
-
-# The border colors:
-#                        border      bg       text      ind   child border
-client.focused          #689d6a   #282828   #ebdbb2   #83a598   #689d6a
-client.focused_inactive #7c6f64   #282828   #ebdbb2   #7c6f64   #7c6f64
-client.unfocused        #3c3836   #282828   #928374   #3c3836   #3c3836
-client.urgent           #cc241d   #282828   #ebdbb2   #cc241d   #cc241d
-client.placeholder      #3c3836   #282828   #928374   #3c3836   #3c3836
-
+# The border colors (Gruvbox Dark Hard):
+#                        border      bg       text      ind       child border
+client.focused          #d79921   #1d2021   #ebdbb2   #fabd2f   #d79921
+client.focused_inactive #665c54   #1d2021   #ebdbb2   #665c54   #665c54
+client.unfocused        #3c3836   #1d2021   #928374   #3c3836   #3c3836
+client.urgent           #cc241d   #1d2021   #ebdbb2   #cc241d   #cc241d
+client.placeholder      #3c3836   #1d2021   #928374   #3c3836   #3c3836
 # ===================== INPUT CONFIGURATION ============================
 input type:touchpad {
     dwt enabled
@@ -51,41 +38,60 @@ input type:touchpad {
 input type:keyboard {
     xkb_layout "us"
 }
+# ===================== WORKSPACE ASSIGNMENTS ============================
+# Assign workspaces to monitors (matching aerospace monitor assignments)
+workspace 1 output eDP-1     # Main monitor - Ghostty
+workspace 2 output eDP-1     # Main monitor - Emacs
+workspace 3 output eDP-1     # Main monitor - Browser
+workspace 4 output eDP-1     # Main monitor - Code
+workspace 5 output eDP-1     # Main monitor
+workspace 6 output DP-2      # Secondary monitor (fallback to main)
+workspace 7 output DP-2      # Secondary monitor (fallback to main)
+workspace 8 output DP-2      # Secondary monitor (fallback to main)
+workspace 9 output DP-2      # Secondary monitor (fallback to main)
+workspace 10 output DP-2      # Secondary monitor - Spotify
 
+# Auto-assign applications to workspaces (matching aerospace on-window-detected)
+assign [app_id="com.mitchellh.ghostty"] workspace number 1
+assign [app_id="Emacs"] workspace number 2
+assign [class="LibreWolf"] workspace number 3
+assign [app_id="librewolf"] workspace number 3
+assign [class="code"] workspace number 4
+assign [app_id="code"] workspace number 4
+assign [class="jetbrains-idea"] workspace number 4
+assign [class="Spotify"] workspace number 10
+assign [app_id="spotify"] workspace number 10
 # ===================== KEY BINDINGS ============================
-
 # --- Launchers ---
-bindsym $mod+s exec spotify-launcher
-bindsym $mod+b exec $browser
 bindsym $mod+Return exec $term
 bindsym $mod+d exec emacsclient -c -a "emacs"
 
 # --- Window management ---
 bindsym $mod+q kill
-bindsym $mod+f fullscreen
+bindsym $mod+Shift+f fullscreen
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
-bindsym $mod+a focus parent
+bindsym $mod+p focus parent
 
-# Floating modifier (unchanged)
+# Floating modifier
 floating_modifier $mod normal
 
 # --- Config / session ---
 bindsym $mod+Shift+c reload
 
-# --- Focus movement (vim keys only; arrow keys removed) ---
-bindsym $mod+$left focus left
-bindsym $mod+$down focus down
-bindsym $mod+$up focus up
-bindsym $mod+$right focus right
+# --- Focus movement (vim keys - matching aerospace alt-hjkl) ---
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
-# --- Move windows (vim keys only; arrow keys removed) ---
-bindsym $mod+Shift+$left move left
-bindsym $mod+Shift+$down move down
-bindsym $mod+Shift+$up move up
-bindsym $mod+Shift+$right move right
+# --- Move windows (vim keys - matching aerospace alt-shift-hjkl) ---
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
-# --- Workspaces ---
+# --- Workspaces (number keys - matching aerospace alt-[0-9]) ---
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace number 3
@@ -97,6 +103,7 @@ bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
 
+# --- Move to workspace (matching aerospace alt-shift-[0-9]) ---
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
 bindsym $mod+Shift+3 move container to workspace number 3
@@ -108,16 +115,28 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
-# --- Layout ---
+# --- Named workspace shortcuts (matching aerospace letter bindings) ---
+bindsym $mod+a workspace number 1    # Ghostty (terminal)
+bindsym $mod+e workspace number 2    # Emacs
+bindsym $mod+b workspace number 3    # Browser (librewolf)
+bindsym $mod+c workspace number 4    # Code
+bindsym $mod+s workspace number 6    # Secondary
+bindsym $mod+m workspace number 10   # Spotify
+
+# --- Layout toggles (matching aerospace) ---
+bindsym $mod+slash layout toggle split
+bindsym $mod+comma layout stacking
+
+# --- Layout orientation ---
 bindsym $mod+v splitv
-bindsym $mod+e layout toggle split
+bindsym $mod+Shift+v splith
 
+# --- Resize mode ---
 mode "resize" {
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-
+    bindsym h resize shrink width 10px
+    bindsym j resize grow height 10px
+    bindsym k resize shrink height 10px
+    bindsym l resize grow width 10px
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
@@ -128,13 +147,11 @@ bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
 bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
 # --- Screenshot ---
 bindsym Print exec grim
-
 # --- Status Bar ---
 bar {
     position bottom
@@ -143,18 +160,18 @@ bar {
     strip_workspace_numbers yes
     colors {
         statusline #ebdbb2
-        background #000000
+        background #1d2021
         separator #665c54
         
         # Workspace colors
-        # Active workspace - use the green from your focused border
-        focused_workspace #689d6a #689d6a #000000
+        # Active workspace - yellow accent matching focused borders
+        focused_workspace #d79921 #d79921 #1d2021
         
-        # Inactive workspace - black background, subtle text
-        inactive_workspace #000000 #000000 #7c6f64
+        # Inactive workspace - dark background, muted text
+        inactive_workspace #1d2021 #1d2021 #928374
         
         # Active but not focused (on other monitor)
-        active_workspace #000000 #000000 #ebdbb2
+        active_workspace #1d2021 #1d2021 #ebdbb2
         
         # Urgent - red accent
         urgent_workspace #cc241d #cc241d #ebdbb2
