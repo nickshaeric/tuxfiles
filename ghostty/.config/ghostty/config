@@ -10,7 +10,7 @@ font-family-bold-italic = JetBrainsMono Nerd Font
 
 # theme
 theme = Gruvbox Dark Hard
-background = 000000
+#background = 000000
 term = xterm-256color
 
 # window settings
