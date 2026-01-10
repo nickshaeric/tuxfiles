@@ -84,37 +84,15 @@ All package declarations go here. This tangles to =packages.el=.
 
 #+begin_src emacs-lisp
 (setq doom-theme 'doom-gruvbox
-      fancy-splash-image "~/dotfiles/doom/.config/doom/emacs.png")
+      fancy-splash-image "~/tuxfiles/doom/.config/doom/logo.svg")
 #+end_src
 
 *** Fonts
 
 #+begin_src emacs-lisp
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16)
-      doom-variable-pitch-font (font-spec :family "Inter" :size 16)
-      doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size 26))
-#+end_src
-
-** macOS Specific
-
-Some macOS specific settings for better integration.
-
-For thinner fonts on macOS, run in terminal:
-: defaults write org.gnu.Emacs AppleFontSmoothing -int 0
-
-To revert:
-: defaults delete org.gnu.Emacs AppleFontSmoothing
-
-#+begin_src emacs-lisp
-(when (featurep :system 'macos)
-  (setq mac-option-modifier 'meta          ; Use Option as Meta
-        mac-command-modifier 'super        ; Keep Cmd for system shortcuts
-        ns-use-proxy-icon nil
-        ns-use-native-fullscreen t)
-
-  ;; Hide menu bar and window decorations
-  (menu-bar-mode -1)
-  (add-to-list 'default-frame-alist '(undecorated . t)))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 18)
+      doom-variable-pitch-font (font-spec :family "Inter" :size 18)
+      doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size 28))
 #+end_src
 
 ** Editor Settings
@@ -130,7 +108,7 @@ Garbage collection tweaks to make Emacs faster.
 (use-package! gcmh
   :init
   (setq gcmh-idle-delay 5
-        gcmh-high-cons-threshold (* 256 1024 1024))  ; 256MB during idle
+        gcmh-high-cons-threshold (* 258 1024 1024))  ; 256MB during idle
   :config
   (gcmh-mode 1))
 #+end_src

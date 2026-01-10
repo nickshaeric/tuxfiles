@@ -5,21 +5,11 @@
       confirm-kill-emacs nil)
 
 (setq doom-theme 'doom-gruvbox
-      fancy-splash-image "~/dotfiles/doom/.config/doom/emacs.png")
+      fancy-splash-image "~/tuxfiles/doom/.config/doom/logo.svg")
 
-(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16)
-      doom-variable-pitch-font (font-spec :family "Inter" :size 16)
-      doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size 26))
-
-(when (featurep :system 'macos)
-  (setq mac-option-modifier 'meta          ; Use Option as Meta
-        mac-command-modifier 'super        ; Keep Cmd for system shortcuts
-        ns-use-proxy-icon nil
-        ns-use-native-fullscreen t)
-
-  ;; Hide menu bar and window decorations
-  (menu-bar-mode -1)
-  (add-to-list 'default-frame-alist '(undecorated . t)))
+(setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 18)
+      doom-variable-pitch-font (font-spec :family "Inter" :size 18)
+      doom-big-font (font-spec :family "JetBrainsMono Nerd Font" :size 28))
 
 ;; Reduce garbage collection frequency
 (setq gc-cons-threshold 200000000)  ; 200MB
@@ -28,7 +18,7 @@
 (use-package! gcmh
   :init
   (setq gcmh-idle-delay 5
-        gcmh-high-cons-threshold (* 256 1024 1024))  ; 256MB during idle
+        gcmh-high-cons-threshold (* 258 1024 1024))  ; 256MB during idle
   :config
   (gcmh-mode 1))
 
