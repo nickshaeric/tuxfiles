@@ -93,7 +93,7 @@
   :hook (org-mode . org-latex-preview-mode)
   :init
   (setq org-latex-preview-process-precompiled nil
-        org-startup-with-latex-preview nil)
+        org-startup-with-latex-preview t)
 
   :config
   ;; Packages available during fragment compilation

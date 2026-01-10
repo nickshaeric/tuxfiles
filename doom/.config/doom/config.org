@@ -9,7 +9,6 @@
 - [[#basic][Basic]]
   - [[#personal-information][Personal Information]]
   - [[#appearance][Appearance]]
-  - [[#macos-specific][macOS Specific]]
   - [[#editor-settings][Editor Settings]]
 - [[#dashboard][Dashboard]]
   - [[#remove-default-widgets][Remove Default Widgets]]
@@ -261,7 +260,7 @@ Based on: https://abode.karthinks.com/org-latex-preview/
   :hook (org-mode . org-latex-preview-mode)
   :init
   (setq org-latex-preview-process-precompiled nil
-        org-startup-with-latex-preview nil)
+        org-startup-with-latex-preview t)
 
   :config
   ;; Packages available during fragment compilation
