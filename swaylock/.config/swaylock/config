@@ -1,12 +1,11 @@
 # Swaylock configuration (Gruvbox Dark Hard theme)
-
 font=JetBrains Mono Nerd Font
 indicator-radius=100
 indicator-thickness=10
-color=1d2021
+color=000000
 line-color=3c3836
 ring-color=3c3836
-inside-color=1d202180
+inside-color=00000080
 key-hl-color=d79921
 bs-hl-color=cc241d
 text-color=ebdbb2
