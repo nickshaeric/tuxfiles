@@ -1,13 +1,10 @@
 #!/usr/bin/env bash
-
-# Exit on errors, undefined variables, and pipe failures
 set -euo pipefail
 
 ###########################################
 # STEP 1: Check if templates directory exists
 ###########################################
 TEMPLATE_DIR="$HOME/Documents/templates"
-
 if [[ ! -d "$TEMPLATE_DIR" ]]; then
     echo "Error: Template directory not found at $TEMPLATE_DIR"
     exit 1
@@ -17,10 +14,9 @@ fi
 # STEP 2: Let user pick a template file
 ###########################################
 echo "Finding templates..."
-
 # Find all files in template directory (excluding git folders)
 template_file=$(find "$TEMPLATE_DIR" -type f -not -path "*/.git/*" 2>/dev/null \
-    | fzf --prompt="Select a template: " --height 20 --border)
+    | fzf --prompt="Select a template: ")
 
 # Exit if user cancelled (pressed ESC or Ctrl+C)
 if [[ -z "$template_file" ]]; then
@@ -36,7 +32,6 @@ echo "Selected template: $(basename "$template_file")"
 # STEP 3: Let user pick destination directory
 ###########################################
 echo "Finding destination directories..."
-
 # List of directories to search for destinations
 search_dirs=(
     "$HOME/Desktop"
@@ -49,7 +44,7 @@ search_dirs=(
 dest_dir=$(
     for dir in "${search_dirs[@]}"; do
         find "$dir" -type d -not -path "*/.git*" 2>/dev/null
-    done | fzf --prompt="Select destination directory: " --height 20 --border
+    done | fzf --prompt="Select destination directory: "
 )
 
 # Exit if user cancelled
@@ -64,7 +59,6 @@ if [[ ! -d "$dest_dir" ]]; then
     echo "Error: Destination directory does not exist"
     exit 1
 fi
-
 echo "Selected destination: $dest_dir"
 
 ###########################################
@@ -82,10 +76,7 @@ fi
 # STEP 5: Copy the file
 ###########################################
 destination_path="$dest_dir/$new_name"
-
 cp "$template_file" "$destination_path"
 
-echo ""
-echo "✓ Success!"
 echo "Copied: $original_name"
 echo "To: $destination_path"
