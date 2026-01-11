@@ -5,10 +5,19 @@ font pango: JetBrains Mono Nerd Font 10
 exec nm-applet
 # Start Emacs server for emacsclient (Doom Emacs)
 exec --no-startup-id emacs --daemon
+# Idle management and screen locking
+exec swayidle -w \
+    timeout 300 'swaylock -f' \
+    timeout 600 'swaymsg "output * dpms off"' \
+         resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -f'
 # ===================== MONITORS ==================================
 # monitor details: swaymsg -t get_outputs
 output eDP-1 pos 0 0 res 1920x1080@60Hz
 output DP-2 pos 0 -1080 res 1920x1080@60Hz
+# ===================== WALLPAPER ============================
+# Set your wallpaper path below
+output * bg /home/nicksha/Pictures/wallpapers/gruv/field.jpg fill
 # ===================== APP VARIABLES =============================
 set $mod Mod4
 set $term ghostty
@@ -49,7 +58,7 @@ workspace 6 output DP-2      # Secondary monitor (fallback to main)
 workspace 7 output DP-2      # Secondary monitor (fallback to main)
 workspace 8 output DP-2      # Secondary monitor (fallback to main)
 workspace 9 output DP-2      # Secondary monitor (fallback to main)
-workspace 10 output DP-2      # Secondary monitor - Spotify
+workspace 10 output DP-2    # Secondary monitor - Spotify
 
 # Auto-assign applications to workspaces (matching aerospace on-window-detected)
 assign [app_id="com.mitchellh.ghostty"] workspace number 1
@@ -78,6 +87,7 @@ floating_modifier $mod normal
 
 # --- Config / session ---
 bindsym $mod+Shift+c reload
+bindsym $mod+Shift+p exec swaylock -f
 
 # --- Focus movement (vim keys - matching aerospace alt-hjkl) ---
 bindsym $mod+h focus left
@@ -121,7 +131,7 @@ bindsym $mod+e workspace number 2    # Emacs
 bindsym $mod+b workspace number 3    # Browser (librewolf)
 bindsym $mod+c workspace number 4    # Code
 bindsym $mod+s workspace number 6    # Secondary
-bindsym $mod+m workspace number 10   # Spotify
+bindsym $mod+m workspace number 10   # Spotify (music)
 
 # --- Layout toggles (matching aerospace) ---
 bindsym $mod+slash layout toggle split
@@ -151,7 +161,15 @@ bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
 # --- Screenshot ---
-bindsym Print exec grim
+# Full screen screenshot
+bindsym $mod+Print exec grim ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
+# Selection screenshot
+bindsym $mod+Shift+Print exec grim -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
+# Full screen to clipboard
+bindsym Ctrl+Print exec grim - | wl-copy
+# Selection to clipboard
+bindsym Ctrl+Shift+Print exec grim -g "$(slurp)" - | wl-copy
+
 # --- Status Bar ---
 bar {
     position bottom
