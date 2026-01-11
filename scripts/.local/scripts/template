@@ -41,8 +41,8 @@ echo "Finding destination directories..."
 search_dirs=(
     "$HOME/Desktop"
     "$HOME/Documents"
-    "$HOME/developer"
-    "$HOME/university"
+    "$HOME/Developer"
+    "$HOME/University"
 )
 
 # Find all subdirectories in the search locations
