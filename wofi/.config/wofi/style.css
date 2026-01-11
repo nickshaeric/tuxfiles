@@ -2,33 +2,27 @@
     border-radius: 0px;
     border: none;
 }
-
 window {
     font-size: 20px;
-    font-family: "Iosevka Nerd Font Mono";
-    background-color: #282828;
+    font-family: "JetBrainsMono Nerd Font Mono";
+    background-color: #1d2021;
     color: #ebdbb2;
 }
-
 #entry {
     padding: 0.25em;
 }
-
 #entry:selected {
     background-color: #504945;
-    background: linear-gradient(90deg, #d79921, #fe8019);
+    background: linear-gradient(90deg, #d79921, #d65d0e);
 }
-
 #text:selected {
-    color: #282828;
+    color: #1d2021;
 }
-
 #input {
     background-color: #3c3836;
     color: #ebdbb2;
     padding: 0.25em;
 }
-
 #image {
     margin-left: 0.25em;
     margin-right: 0.25em;
