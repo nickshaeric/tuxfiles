@@ -74,7 +74,7 @@ assign [app_id="spotify"] workspace number 10
 # --- Launchers ---
 bindsym alt+Space exec wofi --show drun
 bindsym $mod+Return exec $term
-bindsym $mod+d exec emacsclient -c -a "emacs"
+bindsym alt+e exec emacsclient -c -a "emacs"
 
 # --- Window management ---
 bindsym $mod+q kill
@@ -127,12 +127,12 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
 # --- Named workspace shortcuts (matching aerospace letter bindings) ---
-bindsym $mod+a workspace number 1    # Ghostty (terminal)
+bindsym $mod+a workspace number 1    # Ghostty
 bindsym $mod+e workspace number 2    # Emacs
-bindsym $mod+b workspace number 3    # Browser (librewolf)
+bindsym $mod+b workspace number 3    # Browser
 bindsym $mod+c workspace number 4    # Code
 bindsym $mod+s workspace number 6    # Secondary
-bindsym $mod+m workspace number 10   # Spotify (music)
+bindsym $mod+m workspace number 10   # Spotify
 
 # --- Layout toggles (matching aerospace) ---
 bindsym $mod+slash layout toggle split
