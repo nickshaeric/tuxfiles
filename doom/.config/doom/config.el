@@ -60,7 +60,7 @@
 
 (after! org-roam
   (setq org-roam-directory "~/Org/roam/")
-  
+
   ;; Capture templates
   (setq org-roam-capture-templates
         '(("d" "default" plain "%?"
@@ -73,6 +73,10 @@
           ("t" "topic" plain
            "* Definition\n\n* Key Points\n\n* Examples\n\n* Related Concepts\n"
            :target (file+head "topics/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :topic:\n")
+           :unnarrowed t)
+          ("l" "lecture" plain
+           "* Lecture Notes\n\n* Key Concepts\n\n* Examples\n"
+           :target (file+head "lectures/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: :lecture:\n")
            :unnarrowed t))))
 
 (map! :leader

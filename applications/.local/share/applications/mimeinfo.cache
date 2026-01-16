@@ -1,2 +1,4 @@
 [MIME Cache]
+application/x-code-oss-workspace=code-oss.desktop;
+x-scheme-handler/code-oss=code-oss-url-handler.desktop;
 x-scheme-handler/keeper=keeperpasswordmanager.desktop;
