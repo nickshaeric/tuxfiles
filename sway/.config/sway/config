@@ -17,7 +17,7 @@ output eDP-1 pos 0 0 res 1920x1080@60Hz
 output DP-2 pos 0 -1080 res 1920x1080@60Hz
 # ===================== WALLPAPER ============================
 # Set your wallpaper path below
-output * bg /home/nicksha/Pictures/wallpapers/gruv/field.jpg fill
+output * bg /home/nicksha/Pictures/wallpapers/gruv/board.jpg fill
 # ===================== APP VARIABLES =============================
 set $mod Mod4
 set $term ghostty
