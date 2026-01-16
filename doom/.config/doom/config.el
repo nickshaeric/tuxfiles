@@ -81,7 +81,8 @@
        :desc "Insert node"        "i" #'org-roam-node-insert
        :desc "Capture to node"    "c" #'org-roam-capture
        :desc "Toggle roam buffer" "b" #'org-roam-buffer-toggle
-       :desc "Open random note"   "r" #'org-roam-node-random))
+       :desc "Open random note"   "r" #'org-roam-node-random
+       :desc "Open graph UI"      "u" #'org-roam-ui-mode))
 
 (setq +latex-viewers '(pdf-tools)
       TeX-electric-sub-and-superscript t)
