@@ -17,7 +17,7 @@ output eDP-1 pos 0 0 res 1920x1080@60Hz
 output DP-2 pos 0 -1080 res 1920x1080@60Hz
 # ===================== WALLPAPER ============================
 # Set your wallpaper path below
-output * bg /home/nicksha/Pictures/wallpapers/gruv/board.jpg fill
+output * bg /home/nicksha/Documents/Pictures/walls/gruv/archway.jpg fill
 # ===================== APP VARIABLES =============================
 set $mod Mod4
 set $term ghostty
@@ -72,9 +72,10 @@ assign [class="Spotify"] workspace number 10
 assign [app_id="spotify"] workspace number 10
 # ===================== KEY BINDINGS ============================
 # --- Launchers ---
-bindsym alt+Space exec wofi --show drun
+#bindsym alt+Space exec wofi --show drun
 bindsym $mod+Return exec $term
 bindsym alt+e exec emacsclient -c -a "emacs"
+bindsym alt+b exec librewolf
 
 # --- Window management ---
 bindsym $mod+q kill
@@ -163,9 +164,9 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
 # --- Screenshot ---
 # Full screen screenshot
-bindsym $mod+Print exec grim ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
+bindsym $mod+Print exec grim ~/Documents/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
 # Selection screenshot
-bindsym $mod+Shift+Print exec grim -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
+bindsym $mod+Shift+Print exec grim -g "$(slurp)" ~/Documents/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
 # Full screen to clipboard
 bindsym Ctrl+Print exec grim - | wl-copy
 # Selection to clipboard
