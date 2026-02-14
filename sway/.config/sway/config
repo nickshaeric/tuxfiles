@@ -58,15 +58,15 @@ workspace 6 output DP-2      # Secondary monitor (fallback to main)
 workspace 7 output DP-2      # Secondary monitor (fallback to main)
 workspace 8 output DP-2      # Secondary monitor (fallback to main)
 workspace 9 output DP-2      # Secondary monitor (fallback to main)
-workspace 10 output DP-2    # Secondary monitor - Spotify
+workspace 10 output DP-2     # Secondary monitor - Spotify
 
 # Auto-assign applications to workspaces (matching aerospace on-window-detected)
 assign [app_id="com.mitchellh.ghostty"] workspace number 1
 assign [app_id="Emacs"] workspace number 2
 assign [class="LibreWolf"] workspace number 3
 assign [app_id="librewolf"] workspace number 3
-assign [class="code"] workspace number 4
-assign [app_id="code"] workspace number 4
+assign [class="codium"] workspace number 4
+assign [app_id="codium"] workspace number 4
 assign [class="jetbrains-idea"] workspace number 4
 assign [class="Spotify"] workspace number 10
 assign [app_id="spotify"] workspace number 10
@@ -74,8 +74,9 @@ assign [app_id="spotify"] workspace number 10
 # --- Launchers ---
 #bindsym alt+Space exec wofi --show drun
 bindsym $mod+Return exec $term
-bindsym alt+e exec emacsclient -c -a "emacs"
 bindsym alt+b exec librewolf
+bindsym alt+c exec codium
+bindsym alt+e exec emacsclient -c -a "emacs"
 
 # --- Window management ---
 bindsym $mod+q kill
