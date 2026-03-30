@@ -1,0 +1,23 @@
+#!/bin/zsh
+
+# helper
+run_step() {
+    echo "Running: $*"
+    "$@" || { echo "Error during $1. Exiting."; exit 1; }
+}
+
+# maintenance
+echo "Starting Homebrew maintenance..."
+
+run_step brew update
+run_step brew upgrade
+run_step brew cleanup
+run_step brew autoremove
+
+# snapshot installed packages
+BREWFILE="$HOME/dotfiles/Brewfile"
+echo "Saving Brewfile snapshot to $BREWFILE..."
+brew bundle dump --force --file="$BREWFILE"
+echo "Brewfile updated."
+
+echo "Homebrew maintenance completed!"

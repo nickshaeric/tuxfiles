@@ -1,0 +1,31 @@
+# ghostty@mbookair
+config-default-files = false
+
+# Font
+font-size = 16
+font-family = JetBrainsMono Nerd Font
+font-family-bold = JetBrainsMono Nerd Font Bold
+font-family-italic = JetBrainsMono Nerd Font Italic
+font-family-bold-italic = JetBrainsMono Nerd Font Bold Italic
+
+# Theme
+theme = Nord
+term = xterm-256color
+
+# Window Settings
+window-padding-x = 0
+window-padding-y = 0
+window-decoration = none
+window-vsync = true
+maximize = true
+
+# Mac Specific
+macos-option-as-alt = true
+macos-titlebar-style = hidden
+macos-window-buttons = hidden
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+mouse-hide-while-typing = true
+shell-integration-features = no-cursor
