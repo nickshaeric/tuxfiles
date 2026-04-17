@@ -6,7 +6,7 @@ vim.g.maplocalleader = " "
 vim.g.netrw_liststyle = 3
 
 -- Python Provider
-vim.g.python3_host_prog = vim.fn.expand("~/.pyenvs/neovim/bin/python")
+-- TODO
 
 -- Unused Providers
 vim.g.loaded_perl_provider = 0

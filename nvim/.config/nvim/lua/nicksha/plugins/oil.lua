@@ -16,7 +16,7 @@ return {
             skip_confirm_for_simple_edits = true,
         })
 
-        -- keymaps
+        -- Keymaps
         vim.keymap.set("n", "-", "<CMD>Oil<CR>")
         vim.keymap.set("n", "<leader>-", require("oil").toggle_float)
     end

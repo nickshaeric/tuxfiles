@@ -1,6 +1,6 @@
 #+TITLE: Doom Emacs Configuration
 #+AUTHOR: Nicksha Eric
-#+EMAIL: nicksha.eric@gmail.com
+#+EMAIL: nicksha@tuta.io
 #+PROPERTY: header-args:emacs-lisp :tangle config.el
 #+STARTUP: overview
 
@@ -78,7 +78,7 @@ All package declarations go here. This tangles to =packages.el=.
 ;;; config.el -*- lexical-binding: t; -*-
 
 (setq user-full-name "Nicksha Eric"
-      user-mail-address "nicksha.eric@gmail.com"
+      user-mail-address "nicksha@tuta.io"
       confirm-kill-emacs nil)
 #+end_src
 
@@ -87,7 +87,7 @@ All package declarations go here. This tangles to =packages.el=.
 
 #+begin_src emacs-lisp
 (setq doom-theme 'doom-nord
-      fancy-splash-image "~/dotfiles/doom/.config/doom/logo.svg")
+      fancy-splash-image "~/tuxfiles/doom/.config/doom/logo.svg")
 #+end_src
 
 *** Fonts
@@ -215,7 +215,9 @@ Add random custom messages to the dashboard footer.
     "Vi Vi Vi, the editor of the beast"
     "Welcome to the church of Emacs"
     "I showed you my source code, pls respond")
-  "A list of messages, one of which dashboard chooses to display.")
+  "A list of messages, one of which dashboard chooses to display."
+  :type '(repeat string)
+  :group 'doom-dashboard)
 
 (add-hook! '+doom-dashboard-functions :append
   (let* ((icon (propertize

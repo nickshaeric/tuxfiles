@@ -1,11 +1,11 @@
 ;;; config.el -*- lexical-binding: t; -*-
 
 (setq user-full-name "Nicksha Eric"
-      user-mail-address "nicksha.eric@gmail.com"
+      user-mail-address "nicksha@tuta.io"
       confirm-kill-emacs nil)
 
 (setq doom-theme 'doom-nord
-      fancy-splash-image "~/dotfiles/doom/.config/doom/logo.svg")
+      fancy-splash-image "~/tuxfiles/doom/.config/doom/logo.svg")
 
 (setq doom-font (font-spec :family "JetBrainsMono Nerd Font" :size 16)
       doom-variable-pitch-font (font-spec :family "Inter" :size 16)
@@ -61,7 +61,9 @@
     "Vi Vi Vi, the editor of the beast"
     "Welcome to the church of Emacs"
     "I showed you my source code, pls respond")
-  "A list of messages, one of which dashboard chooses to display.")
+  "A list of messages, one of which dashboard chooses to display."
+  :type '(repeat string)
+  :group 'doom-dashboard)
 
 (add-hook! '+doom-dashboard-functions :append
   (let* ((icon (propertize

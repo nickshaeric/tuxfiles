@@ -1,4 +1,4 @@
--- nvim@mbookair
+-- nvim@parabola
 
 -- Core Settings
 require("nicksha.core.globals")
